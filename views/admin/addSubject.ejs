@@ -1,0 +1,11 @@
+<%- include('../partials/header.ejs') %>
+    <%- include('../partials/navbar.ejs') %>
+    <section class="content">
+        <h1 class="heading">Add Subject</h1>
+        <form action="/admin/add-subject"  method="POST">
+            <input type="text" name="title" placeholder="title">
+            <input type="file" name="posterImage">
+            <button type="submit">submit</button>
+        </form>
+    </section>
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,63 @@
+/* for flex reference:- https://tympanus.net/codrops/css_reference/flexbox/ */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: ubuntu;
+}
+
+nav {
+    border-bottom: 0.2px solid #eee;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    padding-right: 2rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+
+nav > ul > li {
+    font-size: 1.5rem;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+h1.heading {
+    margin-left: 3rem;
+    font-size: 3rem;
+    text-transform: uppercase;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.content {
+    padding: 2rem;
+}
+
+.content > ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-gap: 2rem;
+    list-style: none;
+}
+
+.content > ul > li {
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+figure > img {
+    width: 100%;
+}
+
+figure > figcaption {
+    text-transform: uppercase;
+}
