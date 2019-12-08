@@ -5,18 +5,15 @@ exports.getAddSubject = (req, res, next) => {
 };
 
 exports.postAddSubject = (req, res, next) => {
-    const {title, posterImage} = req.body;
-    console.log(title, posterImage);
-    res.send('bla');
-    // const subject = new Subject(title, imageUrl);
-    // subject.save((err, result) => {
-    //     if(err)
-    //     {
-    //         console.log("ERROR from SAVE() Method ! ");
-    //         console.log(err);
-    //     }
-    //     res.end()
-    // });
+    const title = req.body.title;
+    const image = req.file;
+    
+    const subject = new Subject(title, image.path);
+    subject.save((err, result) => {
+        if(err) return console.log(err);
+        console.log('data saved!');
+    });
+    res.end();
 };
 
 //DETAILS we need to add subject content

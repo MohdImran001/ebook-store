@@ -1,7 +1,7 @@
 {
   "name": "ebook-store",
   "version": "1.0.0",
-  "description": "web app that store all the ebooks and class notes. Developed for Jamia Hamdard CSE Branch.",
+  "description": "Website that store all the ebooks and class notes. Developed for Jamia Hamdard CSE Branch.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

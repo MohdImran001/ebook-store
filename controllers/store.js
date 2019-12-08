@@ -1,11 +1,11 @@
-const getDB = require('../utils/database').getDB;
+const Subject = require('../models/subject');
 
 exports.getSubjects = (req, res, next) => {
-    let db = getDB();
+
     res.render('index');
 }
 
 exports.getSubjectContent = (req, res, next) => {
-    console.log(req.params.subjectId);
+    console.log(req.params.contentId);
     res.render('subject_content');
 }

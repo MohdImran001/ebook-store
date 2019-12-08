@@ -1,5 +1,7 @@
 const getDB = require('../utils/database').getDB;
 
+const db = getDB();
+
 class Subject {
     constructor(title, imageUrl) {
         this.title = title;
@@ -8,10 +10,15 @@ class Subject {
     }
 
     save(callback) {
-        const db = getDB();
-        db.collection('subjects').insertOne(this).then(result => callback(null, result)).catch(err => callback(err, null));
+        db.collection('subjects')
+        .insertOne(this)
+        .then(result => callback(null, result))
+        .catch(err => callback(err, null));
     }
 
+    static fetchAll() {
+        
+    }
 };
 
 module.exports = Subject;
