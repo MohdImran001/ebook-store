@@ -1,8 +1,14 @@
 const Subject = require('../models/subject');
 
 exports.getSubjects = (req, res, next) => {
-
-    res.render('index');
+    Subject.fetchAll((err, docs) => {
+        console.log(docs)
+        res.render('index', {
+            pageTitle: 'JH EBooks And ENotes - All Subjects',
+            docs: docs,
+            error: err
+        });
+    })
 }
 
 exports.getSubjectContent = (req, res, next) => {

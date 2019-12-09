@@ -1,6 +1,6 @@
 const getDB = require('../utils/database').getDB;
 
-const db = getDB();
+const db = getDB;
 
 class Subject {
     constructor(title, imageUrl) {
@@ -10,15 +10,19 @@ class Subject {
     }
 
     save(callback) {
-        db.collection('subjects')
+        db().collection('subjects')
         .insertOne(this)
         .then(result => callback(null, result))
         .catch(err => callback(err, null));
     }
 
-    static fetchAll() {
-        
-    }
+    static fetchAll(callback) {
+        db().collection('subjects')
+        .find()
+        .toArray((err, docs) => {
+            callback(err, docs);
+        })
+    } //understand try and catchs
 };
 
 module.exports = Subject;
