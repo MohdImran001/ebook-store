@@ -6,13 +6,16 @@ exports.getAddSubject = (req, res, next) => {
 
 exports.postAddSubject = (req, res, next) => {
     const title = req.body.title;
+    const semester = req.body.semester;
     const image = req.file;
     
-    const subject = new Subject(title, image.path);
-    subject.save((err, result) => {
-        if(err) return console.log(err);
-        console.log('data saved!');
-    });
+    console.log(typeof(semester));
+
+    // const subject = new Subject(title, image.path);
+    // subject.save((err, result) => {
+    //     if(err) return console.log(err);
+    //     console.log('data saved!');
+    // });
     res.end();
 };
 
