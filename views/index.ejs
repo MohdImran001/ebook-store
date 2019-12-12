@@ -14,7 +14,7 @@
                             <img src="<%= subject.imageUrl %>" alt="">
                             <figcaption>
                                 <h2><%= subject.title %></h2> <!-- we will fill the link with mongodb id. localhost:8080/subject?=id -->
-                                <p>2nd Year, 3rd Semester</p> <!-- get this data from admin -->
+                                <p>Year - <%= subject.year %>, Semester - <%= subject.semester %></p> 
                             </figcaption>
                         </figure>
                     </li>

@@ -3,9 +3,11 @@ const getDB = require('../utils/database').getDB;
 const db = getDB;
 
 class Subject {
-    constructor(title, imageUrl) {
+    constructor(title, imageUrl, semester, year) {
         this.title = title;
         this.imageUrl = imageUrl;
+        this.semester = semester;
+        this.year = year;
         this.contenId = undefined;
     }
 
@@ -22,7 +24,7 @@ class Subject {
         .toArray((err, docs) => {
             callback(err, docs);
         })
-    } //understand try and catchs
+    } //understand try and catch
 };
 
 module.exports = Subject;

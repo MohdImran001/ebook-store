@@ -6,17 +6,25 @@ exports.getAddSubject = (req, res, next) => {
 
 exports.postAddSubject = (req, res, next) => {
     const title = req.body.title;
-    const semester = req.body.semester;
+    const semester = parseInt(req.body.semester);
     const image = req.file;
-    
-    console.log(typeof(semester));
+    let year;
 
-    // const subject = new Subject(title, image.path);
-    // subject.save((err, result) => {
-    //     if(err) return console.log(err);
-    //     console.log('data saved!');
-    // });
-    res.end();
+    if(semester >= 1 && semester <= 2)
+        year = 1;
+    else if(semester >= 3 && semester <= 4)
+        year = 2;
+    else if(semester >= 5 && semester <= 6)
+        year = 3;
+    else if(semester >= 7 && semester <= 8)
+        year = 4;
+        
+    const subject = new Subject(title, image.path, semester, year);
+    subject.save((err, result) => {
+        if(err) return console.log(err);
+        res.redirect('/');
+        res.end();
+    });
 };
 
 //DETAILS we need to add subject content
