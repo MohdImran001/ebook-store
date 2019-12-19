@@ -4,6 +4,19 @@ exports.getAddSubject = (req, res, next) => {
     res.render('admin/addSubject');
 };
 
+exports.getAddSubjectContent = (req, res, next) => {
+    Subject.fetch_Title_ID((err, docs) => {
+        if(err) return console.log(err);
+        res
+        .render('admin/addSubjectContent', {
+            pageTitle: 'Add Subject Content',
+            docs: docs,
+            error: err
+        });
+    })
+};
+
+
 exports.postAddSubject = (req, res, next) => {
     const title = req.body.title;
     const semester = parseInt(req.body.semester);
@@ -27,8 +40,12 @@ exports.postAddSubject = (req, res, next) => {
     });
 };
 
-//DETAILS we need to add subject content
-// pdf of :- 1) enotes 2) ebooks 3) exam papers
+//We will always update the document
 exports.postAddSubjectContent = (req, res, next) => {
-    
+    const { subjectTitle, contentType } = req.body;
+    const files = req.files.map((file) => {  //path array []
+        return file.path;
+    })
+    console.log(subjectTitle, contentType, files);
+    res.end();
 }

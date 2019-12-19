@@ -10,16 +10,19 @@
             <ul>
                 <% docs.forEach(subject => { %>
                     <li>
-                        <figure>
-                            <img src="<%= subject.imageUrl %>" alt="">
-                            <figcaption>
-                                <h2><%= subject.title %></h2> <!-- we will fill the link with mongodb id. localhost:8080/subject?=id -->
-                                <p>Year - <%= subject.year %>, Semester - <%= subject.semester %></p> 
-                            </figcaption>
-                        </figure>
+                        <a href="/subject/<%= subject.contentId %>">
+                                <figure>
+                                        <img src="<%= subject.imageUrl %>" alt="">
+                                        <figcaption>
+                                            <h2><%= subject.title %></h2>
+                                            <p>Year - <%= subject.year %>, Semester - <%= subject.semester %></p> 
+                                        </figcaption>
+                                </figure>
+                        </a>
                     </li>
                 <% }) %>
             </ul>
         <% } %>
     </section>
 <%- include('./partials/footer.ejs') %>
+ 
