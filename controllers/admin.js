@@ -44,8 +44,9 @@ exports.postAddSubject = (req, res, next) => {
 exports.postAddSubjectContent = (req, res, next) => {
     const { subjectTitle, contentType } = req.body;
     const files = req.files.map((file) => {  //path array []
-        return file.path;
+        return { title : file.path.split('-')[3], path: file.path }
     })
-    console.log(subjectTitle, contentType, files);
+    console.log(subjectTitle, contentType);
+    console.log(files)
     res.end();
 }

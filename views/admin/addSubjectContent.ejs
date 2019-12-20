@@ -1,0 +1,50 @@
+<%- include('../partials/header.ejs') %>
+    <%- include('../partials/navbar.ejs') %>
+    <section class="content">
+        <h1 class="heading">Add Subject Content</h1>
+        <% if(error) { %>
+            <div class="error">
+                please reload the window or contact support 
+            </div>
+        <% } else { %>
+            <form action="/admin/add-subject-content" class="form" method="POST" enctype="multipart/form-data">
+                
+                <select name="subjectTitle">
+                    <option> Select Subject </option>
+                    <% docs.forEach((doc) => {  %>
+                        <option value="<%= doc._id %>"><%= doc.title %></option>
+                    <% }) %>
+                </select>
+
+                <p>Select type of content</p>
+                <label for="ebooks"> Ebooks</label>
+                <input type="radio" name="contentType" value="ebooks">
+                <label for="enotes"> Enotes</label>
+                <input type="radio" name="contentType" value="enotes">
+                <label for="papers"> Previous Exam Papers</label>
+                <input type="radio" name="contentType" value="papers">
+
+                <!-- handle multiple files in post req using multer -->
+                <p>Upload file or multiple files</p> 
+                <input type="file" name="files" multiple>
+
+                <input type="hidden" value="" id="subjectID" name="subjectID">
+
+                <button type="submit">submit</button>
+            </form>
+        <% } %>
+    </section>
+    <script>
+    window.onload = function() {
+
+        const form = document.querySelector('.form');
+        const input = document.querySelector('#subjectID')
+        form.elements.subjectTitle.onchange = function() {
+            const options = this.options[this.selectedIndex];
+            input.value = options.value;
+            console.log(input)
+        }
+
+    }
+    </script>
+<%- include('../partials/footer.ejs') %>
