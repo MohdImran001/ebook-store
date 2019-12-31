@@ -1,4 +1,5 @@
 const Subject = require('../models/subject');
+const SubjectContent = require('../models/subjectContent');
 
 exports.getAddSubject = (req, res, next) => {
     res.render('admin/addSubject');
@@ -42,11 +43,20 @@ exports.postAddSubject = (req, res, next) => {
 
 //We will always update the document
 exports.postAddSubjectContent = (req, res, next) => {
-    const { subjectTitle, contentType } = req.body;
+    const { subjectID, contentType } = req.body;
     const files = req.files.map((file) => {  //path array []
         return { title : file.path.split('-')[3], path: file.path }
     })
-    console.log(subjectTitle, contentType);
-    console.log(files)
-    res.end();
+
+    const content = new SubjectContent(subjectID, files, [], []);
+    content.save((err, result) => {
+        if(err) {
+            console.log(err); 
+            throw new Error(err);
+        }
+        else {
+            res.redirect('/admin/add-subject-content');
+        }
+    });
+
 }

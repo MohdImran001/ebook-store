@@ -8,7 +8,7 @@ class Subject {
         this.imageUrl = imageUrl;
         this.semester = semester;
         this.year = year;
-        this.contentId = undefined;
+        this.contentID = undefined;
     }
 
     save(callback) {

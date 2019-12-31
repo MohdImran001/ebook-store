@@ -9,7 +9,7 @@
         <% } else { %>
             <form action="/admin/add-subject-content" class="form" method="POST" enctype="multipart/form-data">
                 
-                <select name="subjectTitle">
+                <select name="subjectID">
                     <option> Select Subject </option>
                     <% docs.forEach((doc) => {  %>
                         <option value="<%= doc._id %>"><%= doc.title %></option>
@@ -28,23 +28,23 @@
                 <p>Upload file or multiple files</p> 
                 <input type="file" name="files" multiple>
 
-                <input type="hidden" value="" id="subjectID" name="subjectID">
+                
 
                 <button type="submit">submit</button>
             </form>
         <% } %>
     </section>
-    <script>
+    <!-- <script>
     window.onload = function() {
 
         const form = document.querySelector('.form');
         const input = document.querySelector('#subjectID')
-        form.elements.subjectTitle.onchange = function() {
+        form.elements.subjectId.onchange = function() {
             const options = this.options[this.selectedIndex];
             input.value = options.value;
             console.log(input)
         }
 
     }
-    </script>
+    </script> -->
 <%- include('../partials/footer.ejs') %>
