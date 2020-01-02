@@ -43,4 +43,7 @@ MongoConnect(() => {
     })
 });
 
-//TODO: write a script to fetch the first page of pdf as image 
+// TODO:
+// 1) set up the view for content 
+// 2) style the forms
+// 3) upload it

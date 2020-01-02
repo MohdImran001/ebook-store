@@ -48,8 +48,15 @@ exports.postAddSubjectContent = (req, res, next) => {
         return { title : file.path.split('-')[3], path: file.path }
     })
 
-    const content = new SubjectContent(subjectID, files, [], []);
-    content.save((err, result) => {
+    let content;
+    if(contentType === 'ebooks')
+        content = new SubjectContent(subjectID, files, [], []);
+    else if(contentType === 'enotes')
+        content = new SubjectContent(subjectID, [], files, []);
+    else
+        content = new SubjectContent(subjectID, [], [], files);
+    
+    content.save((err) => {
         if(err) {
             console.log(err); 
             throw new Error(err);
@@ -58,5 +65,4 @@ exports.postAddSubjectContent = (req, res, next) => {
             res.redirect('/admin/add-subject-content');
         }
     });
-
 }
