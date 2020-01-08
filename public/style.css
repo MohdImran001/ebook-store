@@ -54,10 +54,23 @@ a {
     border-radius: 5px;
 }
 
-figure > img {
-    width: 100%;
+figure  {
+    text-align: center;
+    padding-bottom: 2px;
 }
 
 figure > figcaption {
     text-transform: uppercase;
+}
+
+figure > figcaption > p {
+    margin-top: 2rem;
+}
+
+figcaption > p > a {
+    border: 1px solid lightgreen;
+    color: #fff;
+    background-color: lightgreen;
+    padding: 1rem 4rem 1rem 4rem;
+    border-radius: 5px;
 }

@@ -89,6 +89,17 @@ class SubjectContent {
 
         })
     }
+
+    static fetchSubjectContent(contentID, callback) 
+    {
+        db()
+        .collection('content')
+        .findOne({ _id: new ObjectID(contentID) })
+        .then(contentDoc => {
+            callback(null, contentDoc);
+        })
+        .catch(err => callback(err, null));
+    }
 }
 
 module.exports = SubjectContent;

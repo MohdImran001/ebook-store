@@ -1,31 +1,114 @@
 <%- include('./partials/header.ejs') %>
     <%- include('./partials/navbar.ejs') %>
-    <section class="content">
-        <h1 class="heading">EBooks</h1>
-        <ul>
-            <li>
-                <figure>
-                    <img src="/images/vk-mehta.png" alt="">
-                    <figcaption>
-                        <h2>Analog Circuits</h2> <!-- we will fill the link with mongodb id. localhost:8080/subject/id -->
-                        <p>2nd Year, 3rd Semester</p>
-                    </figcaption>
-                </figure>
-            </li>
-        </ul>
-    </section>
-    <section class="content">
-            <h1 class="heading">ENotes</h1>
-            <ul>
-                <li>
-                    <figure>
-                        <img src="/images/vk-mehta.png" alt="">
-                        <figcaption>
-                            <h2>Analog Circuits</h2> <!-- we will fill the link with mongodb id. localhost:8080/subject?=id -->
-                            <p>2nd Year, 3rd Semester</p>
-                        </figcaption>
-                    </figure>
-                </li>
-            </ul>
-    </section>
+
+    <% if (!content) { %>
+        <div class="no-content">
+            <p>no content ! sorry</p>
+        </div>
+    <% } else { %>
+        <section class="content">
+
+
+            <h1 class="heading">EBooks</h1>
+            
+            <% if (content.ebooks.length > 0) { %>
+            
+                <ul>
+
+                    <% content.ebooks.forEach(ebook => { %>
+                        <li>
+                            <figure>
+                                <img src="/icons/ebook.png" alt="<%= ebook.title %>"> 
+                                <figcaption>
+                                    <h2><%= ebook.title %></h2> 
+                                    <p>
+                                        <a href="<%= ebook.path %>">
+                                            Download
+                                        </a>
+                                    </p>
+                                </figcaption>
+                            </figure>
+                        </li>
+                    <% }) %>
+
+                </ul>
+            <% } else { %>
+            
+                <p>No Ebooks as of now for this subject</p>
+            
+            <% } %>
+        
+        </section>
+        
+        
+        <section class="content">
+
+
+                <h1 class="heading">ENotes</h1>
+
+                <% if (content.enotes.length > 0) { %>
+            
+                    <ul>
+    
+                        <% content.enotes.forEach(enote => { %>
+                            <li>
+                                <figure>
+                                    <img src="/icons/enotes.png" alt="<%= enote.title %>"> 
+                                    <figcaption>
+                                        <h2><%= enote.title %></h2> 
+                                        <p>
+                                            <a href="<%= enote.path %>">
+                                                Download
+                                            </a>
+                                        </p>
+                                    </figcaption>
+                                </figure>
+                            </li>
+                        <% }) %>
+                        
+                    </ul>
+                <% } else { %>
+                
+                    <p>No E-Notes as of now for this subject</p>
+                
+                <% } %>
+            
+        </section>
+
+        <section class="content">
+
+
+                <h1 class="heading">Previous Exam Papers</h1>
+
+                <% if (content.papers.length > 0) { %>
+            
+                    <ul>
+    
+                        <% content.papers.forEach(paper => { %>
+                            <li>
+                                <figure>
+                                    <img src="/icons/epaper.png" alt="<%= paper.title %>"> 
+                                    <figcaption>
+                                        <h2><%= paper.title %></h2> 
+                                        
+                                        <p>
+                                            <a href="<%= paper.path %>">
+                                                Download
+                                            </a>
+                                        </p>
+                                    </figcaption>
+                                </figure>
+                            </li>
+                        <% }) %>
+                        
+                    </ul>
+                <% } else { %>
+                
+                    <p>No Previous Year Exam Papers as of now for this subject</p>
+                
+                <% } %>
+            
+        </section>
+
+    <% } %>
 <%- include('./partials/footer.ejs') %>
