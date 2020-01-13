@@ -7,42 +7,62 @@ body {
 
 nav {
     border-bottom: 0.2px solid #eee;
+    padding: 3rem 3rem 2rem 3rem;
+    margin: 0;
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+nav a {
+    display: block;
+    float: left;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+}
+
+.right {
+    float: right;
+    margin-right: 5rem;
+}
+
+#logo {
+    font-weight: bolder;
+    font-size: 36px;
+    margin-top: -32px;
 }
 
 ul {
-    display: flex;
-    list-style: none;
-    padding-right: 2rem;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: start;
-}
-
-nav > ul > li {
-    font-size: 1.5rem;
-}
-
-.logo {
-    font-size: 2rem;
-    font-weight: bold;
+    margin-left: -40px;
 }
 
 h1.heading {
-    margin-left: 3rem;
+    /* margin-left: 3rem; */
     font-size: 3rem;
     text-transform: uppercase;
 }
 
 a {
     text-decoration: none;
-    color: black;
+    color: #000000;
 }
 
 .content {
-    padding: 2rem;
+    padding: 4rem;
 }
 
+.content > h1 > img {
+    vertical-align: middle;
+}
+
+/* .content > p{
+    margin-left: 3rem;
+} */
+
 .content > ul {
+    /* background-color: #eeeef0; */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     grid-gap: 2rem;
@@ -52,10 +72,19 @@ a {
 .content > ul > li {
     border: 1px solid #eee;
     border-radius: 5px;
+    background: #ffffff;
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12)
+  ;  
 }
 
-figure  {
-    text-align: center;
+.figure-content  {
+    text-align: center; 
     padding-bottom: 2px;
 }
 
@@ -67,10 +96,50 @@ figure > figcaption > p {
     margin-top: 2rem;
 }
 
-figcaption > p > a {
-    border: 1px solid lightgreen;
+.download-button {
+    border: 1px solid #34b934;
     color: #fff;
-    background-color: lightgreen;
+    background-color: #34b934;
     padding: 1rem 4rem 1rem 4rem;
     border-radius: 5px;
+}
+
+.subtext {
+    color: #3b3b4f;
+}
+.content  > p {
+    font-size: 20px;
+}
+@media only screen and (max-width: 600px) {
+    body {
+        text-align: center;
+    }
+    .content {
+        padding: 1rem;
+    }
+    figure {
+        text-align: center;
+    }
+}
+@media only screen and (max-width: 800px) {
+    nav {
+        text-align: center;
+        padding: 0;
+        margin-top: 2.5rem;
+    }
+    nav a {
+        float: none;
+        padding: 0 1.5rem 1.5rem 1rem;
+        margin: 0;
+    }
+    .right {
+        float: none;
+        margin-right: 0;
+    }
+    #logo {
+        margin: 0;
+    }
+    figure {
+        text-align: center;
+    }
 }

@@ -6,16 +6,16 @@
                 please reload the window or contact support 
             </div>
         <% } else { %>
-        <h1 class="heading">Subjects</h1>
+        <h1 class="heading"> <img src="/icons/subjects_64.png"> Subjects</h1>
             <ul>
                 <% docs.forEach(subject => { %>
                     <li>
-                        <a href="/subject/<%= subject.contentID %>">
+                        <a  style="text-align: center;" href="/subject/<%= subject.contentID %>">
                                 <figure>
-                                        <img src="<%= subject.imageUrl %>" alt="">
+                                        <img src="/icons/book_128.png" alt="">
                                         <figcaption>
                                             <h2><%= subject.title %></h2>
-                                            <p>Year - <%= subject.year %>, Semester - <%= subject.semester %></p> 
+                                            <p class="subtext">Year - <%= subject.year %>, Semester - <%= subject.semester %></p> 
                                         </figcaption>
                                 </figure>
                         </a>
