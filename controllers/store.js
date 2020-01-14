@@ -5,7 +5,6 @@ exports.getSubjects = (req, res, next) => {
     Subject.fetchAll((err, docs) => {
         // console.log(docs)
         res.render('index', {
-            pageTitle: 'JH EBooks And ENotes - All Subjects',
             docs: docs,
             error: err
         });
@@ -19,7 +18,7 @@ exports.getSubjectContent = (req, res, next) => {
         // console.log(content)
         res.render('subject_content', {
             content: content,
-            pageTitle: 'JH EBooks And ENotes - All Subjects'
+            error: err
         });
     })
 }

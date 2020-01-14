@@ -3,9 +3,8 @@ const getDB = require('../utils/database').getDB;
 const db = getDB;
 
 class Subject {
-    constructor(title, imageUrl, semester, year) {
+    constructor(title, semester, year) {
         this.title = title;
-        this.imageUrl = imageUrl;
         this.semester = semester;
         this.year = year;
         this.contentID = undefined;

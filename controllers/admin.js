@@ -21,7 +21,6 @@ exports.getAddSubjectContent = (req, res, next) => {
 exports.postAddSubject = (req, res, next) => {
     const title = req.body.title;
     const semester = parseInt(req.body.semester);
-    const image = req.file;
     let year;
 
     if(semester >= 1 && semester <= 2)
@@ -33,7 +32,7 @@ exports.postAddSubject = (req, res, next) => {
     else if(semester >= 7 && semester <= 8)
         year = 4;
         
-    const subject = new Subject(title, image.path, semester, year);
+    const subject = new Subject(title, semester, year);
     subject.save((err, result) => {
         if(err) return console.log(err);
         res.redirect('/');

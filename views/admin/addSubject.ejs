@@ -2,9 +2,10 @@
     <%- include('../partials/navbar.ejs') %>
     <section class="content">
         <h1 class="heading">Add Subject</h1>
-        <form action="/admin/add-subject"  method="POST" enctype="multipart/form-data">
+        <form action="/admin/add-subject"  method="POST">
+
             <input type="text" name="title" placeholder="title">
-            <input type="file" name="posterImage">
+            
             <select name="semester">
                 <option>1</option>
                 <option>2</option>
@@ -15,7 +16,9 @@
                 <option>7</option>
                 <option>8</option>
             </select>
+            
             <button type="submit">submit</button>
+
         </form>
     </section>
 <%- include('../partials/footer.ejs') %>
