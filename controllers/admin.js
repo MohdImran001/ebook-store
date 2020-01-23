@@ -1,5 +1,14 @@
+const path = require('path');
+
+const aws = require('aws-sdk');
+
 const Subject = require('../models/subject');
 const SubjectContent = require('../models/subjectContent');
+
+
+//aws-s3 settings
+const S3_BUCKET_NAME = 'elibrary-content';
+aws.config.loadFromPath(path.join(global.__baseDir, 'aws-s3.json'))
 
 exports.getAddSubject = (req, res, next) => {
     res.render('admin/addSubject');
@@ -40,28 +49,54 @@ exports.postAddSubject = (req, res, next) => {
     });
 };
 
-//We will always update the document
+
 exports.postAddSubjectContent = (req, res, next) => {
     const { subjectID, contentType } = req.body;
-    const files = req.files.map((file) => {  //path array []
-        return { title : file.path.split('-')[3], path: file.path }
-    })
 
-    let content;
-    if(contentType === 'ebooks')
-        content = new SubjectContent(subjectID, files, [], []);
-    else if(contentType === 'enotes')
-        content = new SubjectContent(subjectID, [], files, []);
-    else
-        content = new SubjectContent(subjectID, [], [], files);
+    console.log(req.body)
+
+    // let content;
+    // if(contentType === 'ebooks')
+    //     content = new SubjectContent(subjectID, files, [], []);
+    // else if(contentType === 'enotes')
+    //     content = new SubjectContent(subjectID, [], files, []);
+    // else
+    //     content = new SubjectContent(subjectID, [], [], files);
     
-    content.save((err) => {
+    // content.save((err) => {
+    //     if(err) {
+    //         console.log(err); 
+    //         throw new Error(err);
+    //     }
+    //     else {
+    //         res.redirect('/admin/add-subject-content');
+    //     }
+    // });
+}
+
+exports.getAWSSignature = (req, res, next) => {
+    const s3 = new aws.S3();
+    const fileName = req.query['file-name'];
+    const fileType = req.query['file-type'];
+    const s3_params = {
+        Bucket: S3_BUCKET_NAME,
+        Key: fileName,
+        Expires: 60,
+        ContentType: fileType,
+        ACL: 'private'
+    };
+
+    s3.getSignedUrl('putObject', s3_params, (err, data) => {
         if(err) {
-            console.log(err); 
-            throw new Error(err);
+            console.log(err);
+            return res.end(JSON.stringify(err));
         }
-        else {
-            res.redirect('/admin/add-subject-content');
-        }
-    });
+        const returnData = {
+            signedRequest: data,
+            url: `https://${S3_BUCKET_NAME}.s3.amazonaws.com/${fileName}`
+        };
+        // console.log(returnData)
+        res.write(JSON.stringify(returnData));
+        res.end();
+    })
 }

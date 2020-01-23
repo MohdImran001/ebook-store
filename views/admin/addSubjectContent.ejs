@@ -7,8 +7,13 @@
                 please reload the window or contact support 
             </div>
         <% } else { %>
-            <form action="/admin/add-subject-content" class="form" method="POST" enctype="multipart/form-data">
+            
+            <p>Upload files</p> 
+            <input type="file" name="files" id="file-input" multiple>
+            <br><br>
+            <form action="/admin/add-subject-content" class="form" method="POST">
                 
+                <input type="hidden" value="" id="content" name="filesMetdaData">
                 <select name="subjectID">
                     <option> Select Subject </option>
                     <% docs.forEach((doc) => {  %>
@@ -24,27 +29,12 @@
                 <label for="papers"> Previous Exam Papers</label>
                 <input type="radio" name="contentType" value="papers">
 
-                <!-- handle multiple files in post req using multer -->
-                <p>Upload file or multiple files</p> 
-                <input type="file" name="files" multiple>
-
                 
-
+                
                 <button type="submit">submit</button>
             </form>
+
         <% } %>
     </section>
-    <!-- <script>
-    window.onload = function() {
-
-        const form = document.querySelector('.form');
-        const input = document.querySelector('#subjectID')
-        form.elements.subjectId.onchange = function() {
-            const options = this.options[this.selectedIndex];
-            input.value = options.value;
-            console.log(input)
-        }
-
-    }
-    </script> -->
+    <script src="/app.js"></script>
 <%- include('../partials/footer.ejs') %>

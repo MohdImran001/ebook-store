@@ -1,3 +1,5 @@
+global.__baseDir = __dirname;
+
 //built-in module
 const path = require('path');
 
