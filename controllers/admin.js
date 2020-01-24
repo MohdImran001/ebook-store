@@ -7,7 +7,7 @@ const SubjectContent = require('../models/subjectContent');
 
 
 //aws-s3 settings
-const S3_BUCKET_NAME = 'elibrary-content';
+const S3_BUCKET_NAME = '';
 aws.config.loadFromPath(path.join(global.__baseDir, 'aws-s3.json'))
 
 exports.getAddSubject = (req, res, next) => {
@@ -53,25 +53,30 @@ exports.postAddSubject = (req, res, next) => {
 exports.postAddSubjectContent = (req, res, next) => {
     const { subjectID, contentType } = req.body;
 
-    console.log(req.body)
-
-    // let content;
-    // if(contentType === 'ebooks')
-    //     content = new SubjectContent(subjectID, files, [], []);
-    // else if(contentType === 'enotes')
-    //     content = new SubjectContent(subjectID, [], files, []);
-    // else
-    //     content = new SubjectContent(subjectID, [], [], files);
     
-    // content.save((err) => {
-    //     if(err) {
-    //         console.log(err); 
-    //         throw new Error(err);
-    //     }
-    //     else {
-    //         res.redirect('/admin/add-subject-content');
-    //     }
-    // });
+    const f = req.body.filesMetaData.split('|');
+
+    let files = f.map(file => {
+        return JSON.parse(file);
+    })
+
+    let content;
+    if(contentType === 'ebooks')
+        content = new SubjectContent(subjectID, files, [], []);
+    else if(contentType === 'enotes')
+        content = new SubjectContent(subjectID, [], files, []);
+    else
+        content = new SubjectContent(subjectID, [], [], files);
+    
+    content.save((err) => {
+        if(err) {
+            console.log(err); 
+            throw new Error(err);
+        }
+        else {
+            res.redirect('/admin/add-subject-content');
+        }
+    });
 }
 
 exports.getAWSSignature = (req, res, next) => {
