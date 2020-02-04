@@ -1,8 +1,19 @@
 /* for flex reference:- https://tympanus.net/codrops/css_reference/flexbox/ */
+
+html, body {
+    height: 100%;
+}
+
 body {
     margin: 0;
     padding: 0;
     font-family: ubuntu;
+    color: #141823;
+}
+
+.wrapper {
+    min-height: 100%;
+    margin-bottom: 50px;
 }
 
 nav {
@@ -20,7 +31,7 @@ nav a {
     float: left;
     text-decoration: none;
     font-size: 18px;
-    color: black;
+    color: #141823;
 }
 
 .right {
@@ -40,13 +51,13 @@ ul {
 
 h1.heading {
     /* margin-left: 3rem; */
-    font-size: 3rem;
+    font-size: 2.5rem;
     text-transform: uppercase;
 }
 
 a {
     text-decoration: none;
-    color: #000000;
+    color: #141823;
 }
 
 .content {
@@ -80,11 +91,19 @@ a {
     0 22.3px 17.9px rgba(0, 0, 0, 0.072),
     0 41.8px 33.4px rgba(0, 0, 0, 0.086),
     0 100px 80px rgba(0, 0, 0, 0.12)
-  ;  
+  ;
+}
+
+.subjectTitle {
+    margin-left: 4rem;
+    font-weight: bolder;
+    font-size: 3rem;
+    border-bottom: 3px solid #eee;
+    width: 90%;
 }
 
 .figure-content  {
-    text-align: center; 
+    text-align: center;
     padding-bottom: 2px;
 }
 
@@ -110,6 +129,30 @@ figure > figcaption > p {
 .content  > p {
     font-size: 20px;
 }
+
+.no-content {
+    margin-left: 3rem;
+    font-size: 3rem;
+    color: grey;
+}
+
+.push {
+    height: 70px;
+}
+
+.footer {
+    width: 100%;
+    background-color: #eee;
+    height: 70px;
+    text-align: center;
+}
+
+.footer p {
+    margin: 20px;
+    padding-top: 20px;
+}
+
+
 @media only screen and (max-width: 600px) {
     body {
         text-align: center;
@@ -120,7 +163,24 @@ figure > figcaption > p {
     figure {
         text-align: center;
     }
+    .subjectTitle {
+        font-size: 12px;
+    }
+    h1.heading {
+        font-size: 1.5rem;
+    }
+    .footer {
+        height: 70px;
+    }
+    .footer p{
+        margin: 20px;
+        padding-top: 15px;
+    }
+
 }
+
+
+
 @media only screen and (max-width: 800px) {
     nav {
         text-align: center;
@@ -139,7 +199,21 @@ figure > figcaption > p {
     #logo {
         margin: 0;
     }
+    .subjectTitle {
+        margin: 0 0 30px 0;
+        text-align: center;
+        font-size: 1.5rem;
+        width: 100%;
+        
+    }
     figure {
         text-align: center;
     }
+    .no-content {
+      text-align: center;
+      margin-left: 0;
+      font-size: 1.5rem;
+      color: grey;
+    }
+
 }

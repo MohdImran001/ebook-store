@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 })
 
 app.use((err, req, res, next) => {
-    res.send("Errrrrrrror");
+    res.json({"error": err});
     console.log(err);
 })
 

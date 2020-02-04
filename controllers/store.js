@@ -3,7 +3,7 @@ const SubjectContent = require('../models/subjectContent');
 
 exports.getSubjects = (req, res, next) => {
     Subject.fetchAll((err, docs) => {
-        // console.log(docs)
+        //console.log(docs)
         res.render('index', {
             docs: docs,
             error: err

@@ -7,7 +7,7 @@ const SubjectContent = require('../models/subjectContent');
 
 
 //aws-s3 settings
-const S3_BUCKET_NAME = '';
+const S3_BUCKET_NAME = 'elibrary-content';
 aws.config.loadFromPath(path.join(global.__baseDir, 'aws-s3.json'))
 
 exports.getAddSubject = (req, res, next) => {
@@ -52,7 +52,6 @@ exports.postAddSubject = (req, res, next) => {
 
 exports.postAddSubjectContent = (req, res, next) => {
     const { subjectID, contentType } = req.body;
-
     
     const f = req.body.filesMetaData.split('|');
 

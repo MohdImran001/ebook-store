@@ -36,6 +36,7 @@ class SubjectContent {
         this.ebooks = ebooks;
         this.enotes = enotes;
         this.papers = papers;
+        this.subjectTitle = null;
     }
 
     save(callback) {
@@ -45,6 +46,7 @@ class SubjectContent {
 
             if(doc.contentID)
             { 
+                
                 db()
                 .collection('content')
                 .updateOne({ _id: doc.contentID }, { 
@@ -69,6 +71,7 @@ class SubjectContent {
             }
             else 
             {
+                this.subjectTitle = doc.title;
                 db()
                 .collection('content')
                 .insertOne(this)

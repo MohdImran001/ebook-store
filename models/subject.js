@@ -21,8 +21,12 @@ class Subject {
         db().collection('subjects')
         .find() //use limit function in production with pagination
         .toArray((err, docs) => {
-            callback(err, docs);
-        }) 
+            if(docs.length > 0)
+              callback(err, docs);
+            else {
+              callback(err, null);
+            }
+        })
     } //understand try and catch
 
     static fetch_Title_ID(callback) {
@@ -31,7 +35,7 @@ class Subject {
         .project({title:1,  _id:1})
         .toArray((err, docs) => {
             callback(err, docs)
-        })                                                                                            
+        })
     }
 };
 

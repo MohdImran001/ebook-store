@@ -1,11 +1,11 @@
 <%- include('./partials/header.ejs') %>
     <%- include('./partials/navbar.ejs') %>
-    <section class="content">
-        <% if(error) { %>
-            <div class="error">
-                please reload the window or contact support 
-            </div>
-        <% } else { %>
+    <% if(!docs) { %>
+        <div class="no-content">
+            <p>Sorry ! please contact support </p>
+        </div>
+    <% } else { %>
+      <section class="content">
         <h1 class="heading"> <img src="/icons/subjects_64.png"> Subjects</h1>
             <ul>
                 <% docs.forEach(subject => { %>
@@ -15,14 +15,14 @@
                                         <img src="/icons/book_128.png" alt="">
                                         <figcaption>
                                             <h2><%= subject.title %></h2>
-                                            <p class="subtext">Year - <%= subject.year %>, Semester - <%= subject.semester %></p> 
+                                            <p class="subtext">Year - <%= subject.year %>, Semester - <%= subject.semester %></p>
                                         </figcaption>
                                 </figure>
                         </a>
                     </li>
                 <% }) %>
             </ul>
-        <% } %>
-    </section>
+        </section>
+    <% } %>
+
 <%- include('./partials/footer.ejs') %>
- 

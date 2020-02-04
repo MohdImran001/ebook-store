@@ -1,4 +1,4 @@
-window.onload = function() 
+window.onload = function()
 {
     document.querySelector('#file-input').onchange = () => {
         const files = document.querySelector('#file-input').files;
@@ -35,13 +35,18 @@ window.onload = function()
             if(xhr.readyState === 4) {
                 console.log(xhr.responseText)
                 if(xhr.status === 200) {
-                    
+
                     let obj = {};
                     obj.name = file.name;
                     obj.path = url;
                     obj.type = file.type;
 
-                    document.getElementById('content').value += `|${JSON.stringify(obj)}`;
+                    const input = document.getElementById('content');
+                    if(input.value === '')
+                      input.value += `${JSON.stringify(obj)}`;
+                    else {
+                      input.value += `${JSON.stringify(obj)}`;
+                    }
                 }
                 else {
                     alert('file not uploaded');

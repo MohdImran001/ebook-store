@@ -3,24 +3,29 @@
 
     <% if (!content) { %>
         <div class="no-content">
-            <p>no content ! sorry</p>
+            <h1>Sorry ! there is no content :( </h1>
         </div>
     <% } else { %>
-        <section class="content">
+
+        <section class="subjectTitle">
+          <p> <%= content.subjectTitle %> </p>
+        </section>
+
+        <section class="content" style="margin-top: -50px">
 
 
             <h1 class="heading"> <img src="/icons/book_64.png"> EBooks</h1>
-            
+
             <% if (content.ebooks.length > 0) { %>
-            
+
                 <ul>
 
                     <% content.ebooks.forEach(ebook => { %>
                         <li>
                             <figure class="figure-content">
-                                <img src="/icons/ebook.png" alt="<%= ebook.title %>"> 
+                                <img src="/icons/ebook.png" alt="<%= ebook.title %>">
                                 <figcaption>
-                                    <h2><%= ebook.title %></h2> 
+                                    <h2><%= ebook.title %></h2>
                                     <p>
                                         <a class="download-button" href="<%= ebook.path %>">
                                             Download
@@ -33,29 +38,29 @@
 
                 </ul>
             <% } else { %>
-            
+
                 <p class="subtext">No Ebooks as of now for this subject</p>
-            
+
             <% } %>
-        
+
         </section>
-        
-        
+
+
         <section class="content">
 
 
                 <h1 class="heading">  <img src="/icons/notes_64.png"> ENotes</h1>
 
                 <% if (content.enotes.length > 0) { %>
-            
+
                     <ul>
-    
+
                         <% content.enotes.forEach(enote => { %>
                             <li>
                                 <figure class="figure-content">
-                                    <img src="/icons/enotes.png" alt="<%= enote.title %>"> 
+                                    <img src="/icons/enotes.png" alt="<%= enote.name %>">
                                     <figcaption>
-                                        <h2><%= enote.title %></h2> 
+                                        <h2><%= enote.title %></h2>
                                         <p>
                                             <a class="download-button" href="<%= enote.path %>">
                                                 Download
@@ -65,32 +70,32 @@
                                 </figure>
                             </li>
                         <% }) %>
-                        
+
                     </ul>
                 <% } else { %>
-                
+
                     <p class="subtext">No E-Notes as of now for this subject</p>
-                
+
                 <% } %>
-            
+
         </section>
 
         <section class="content">
 
 
-                <h1 class="heading">  <img src="/icons/papers_64.png"> Previous Exam Papers</h1>
+                <h1 class="heading">  <img src="/icons/papers_64.png"> Previous Papers</h1>
 
                 <% if (content.papers.length > 0) { %>
-            
+
                     <ul>
-    
+
                         <% content.papers.forEach(paper => { %>
                             <li>
                                 <figure class="figure-content">
-                                    <img src="/icons/epaper.png" alt="<%= paper.title %>"> 
+                                    <img src="/icons/epaper.png" alt="<%= paper.name %>">
                                     <figcaption>
-                                        <h2><%= paper.title %></h2> 
-                                        
+                                        <h2><%= paper.title %></h2>
+
                                         <p>
                                             <a class="download-button" href="<%= paper.path %>">
                                                 Download
@@ -100,14 +105,14 @@
                                 </figure>
                             </li>
                         <% }) %>
-                        
+
                     </ul>
                 <% } else { %>
-                
+
                     <p class="subtext">No Previous Year Exam Papers as of now for this subject</p>
-                
+
                 <% } %>
-            
+
         </section>
 
     <% } %>
