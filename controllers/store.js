@@ -4,10 +4,16 @@ const SubjectContent = require('../models/subjectContent');
 exports.getSubjects = (req, res, next) => {
     Subject.fetchAll((err, docs) => {
         //console.log(docs)
-        res.render('index', {
-            docs: docs,
-            error: err
-        });
+        if(res.locals.ua === null)
+            res.render('index', {
+                docs: docs,
+                error: err
+            });
+        else
+            res.render('mobile_index', {
+                docs: docs,
+                error: err
+            });
     })
 }
 

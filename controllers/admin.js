@@ -44,7 +44,7 @@ exports.postAddSubject = (req, res, next) => {
     const subject = new Subject(title, semester, year);
     subject.save((err, result) => {
         if(err) return console.log(err);
-        res.redirect('/');
+        res.redirect('/admin/add-subject-content');
         res.end();
     });
 };

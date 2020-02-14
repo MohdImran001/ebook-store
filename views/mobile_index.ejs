@@ -1,0 +1,28 @@
+<%- include('./partials/header.ejs') %>
+    <%- include('./partials/navbar.ejs') %>
+    <% if(!docs) { %>
+        <div class="no-content">
+            <p>Sorry ! please contact support </p>
+        </div>
+    <% } else { %>
+      <section class="mobile-content">
+        <h1 class="heading"> <img src="/icons/subjects_64.png"> Subjects</h1>
+            <ul>
+                <% docs.forEach(subject => { %>
+                    <li>
+                        <a  style="text-align: center;" href="/subject/<%= subject.contentID %>">
+                                
+                                        <!-- <img src="/icons/book_26.png" alt=""> -->
+                                        
+                            <p><%= subject.title %></p>
+                            <p class="subtext">Year - <%= subject.year %>, Semester - <%= subject.semester %></p>
+                                        
+                               
+                        </a>
+                    </li>
+                <% }) %>
+            </ul>
+        </section>
+    <% } %>
+
+<%- include('./partials/footer.ejs') %>

@@ -18,6 +18,13 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
+//fetching user-agent
+app.use(function(req, res, next) {
+    res.locals.ua = req.get('User-Agent').match(/Mobile/);
+    console.log(res.locals);
+    next();
+})
+
 //middlewares
 //app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));

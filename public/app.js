@@ -45,7 +45,7 @@ window.onload = function()
                     if(input.value === '')
                       input.value += `${JSON.stringify(obj)}`;
                     else {
-                      input.value += `${JSON.stringify(obj)}`;
+                      input.value += `|${JSON.stringify(obj)}`;
                     }
                 }
                 else {
