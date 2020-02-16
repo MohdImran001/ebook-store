@@ -6,15 +6,15 @@
         </div>
     <% } else { %>
       <section class="mobile-content">
-        <h1 class="heading"> <img src="/icons/subjects_64.png"> Subjects</h1>
+        <h1 class="heading"> <!--<img src="/icons/subjects_64.png">--> Subjects</h1>
             <ul>
                 <% docs.forEach(subject => { %>
                     <li>
                         <a  style="text-align: center;" href="/subject/<%= subject.contentID %>">
                                 
-                                        <!-- <img src="/icons/book_26.png" alt=""> -->
+                            <img src="/icons/books_64.png" alt="">
                                         
-                            <p><%= subject.title %></p>
+                            <p class="subject-name"><%= subject.title %></p>
                             <p class="subtext">Year - <%= subject.year %>, Semester - <%= subject.semester %></p>
                                         
                                

@@ -227,3 +227,14 @@ figure > figcaption > p {
 .mobile-content ul{
     list-style: none;
 }
+
+.mobile-content ul li{
+    border-top: 2px solid #eee;
+    border-bottom: 2px solid #eee;
+    padding-top: 10px;
+}
+
+.subject-name {
+    font-size: 20px;
+    font-weight: bold;
+}

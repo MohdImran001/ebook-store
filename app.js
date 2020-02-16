@@ -21,7 +21,7 @@ app.set('views', 'views');
 //fetching user-agent
 app.use(function(req, res, next) {
     res.locals.ua = req.get('User-Agent').match(/Mobile/);
-    console.log(res.locals);
+    // console.log(res.locals);
     next();
 })
 
